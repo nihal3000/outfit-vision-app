@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outfit Vision AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- <link href="https://fonts.googleapis.com/css2?=Caveat&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main class="container">
+        <h1>Outfit Vision ✨</h1>
+        <br>
+        <p class="subtitle">Your Personal AI Stylist</p>
+
+        <form id="upload-form" class="upload-area">
+            <div class="polaroid">
+                <img id="image-preview" src="#" alt="Your Upload" class="hidden"/>
+                <div id="upload-placeholder">
+                    <span class="upload-icon">📷</span>
+                    <p>Click to upload your item</p>
+                </div>
+            </div>
+
+            <input type="file" id="file-input" accept="image/*" hidden>
+
+            <textarea id="prompt-input" rows="3" placeholder="What's the occasion? e.g., 'Style this for a casual weekend brunch'"></textarea>
+
+            <div class="style-selector">
+                <label>Choose Your Style:</label>
+                <div id="style-filter-group" class="style-filter-group">
+                    <button type="button" class="active" data-style="any style">Any Style</button>
+                    <button type="button" data-style="Minimalist">Minimalist</button>
+                    <button type="button" data-style="Streetwear">Streetwear</button>
+                    <button type="button" data-style="Bohemian">Bohemian</button>
+                    <button type="button" data-style="Formal">Formal</button>
+                    <button type="button" data-style="Vintage">Vintage</button>
+                </div>
+            </div>
+
+            <button type="submit" id="submit-button">Get Advice</button>
+        </form>
+
+        <!-- <div id="result-area" class="result hidden">
+            <h2>Style Suggestion:</h2>
+            <div id="loading-spinner" class="spinner hidden"></div>
+            <p id="result-text"></p>
+            
+        </div> -->
+       <div id="result-area" class="result hidden">
+            <div id="loading-spinner" class="spinner hidden"></div> 
+
+            <div id="result-text"></div>
+            <button id="suggest-another-btn" class="hidden">Suggest Another ✨</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

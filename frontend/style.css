@@ -1,0 +1,260 @@
+/* --- Futuristic Stylist HUD Theme --- */
+
+:root {
+    --dark-bg: #0a0a1a;
+    --neon-glow: #00f6ff;
+    --light-text: #d0d8e0;
+    --border-glow: rgba(0, 246, 255, 0.5);
+    --container-bg: rgba(20, 20, 50, 0.3);
+}
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--dark-bg);
+    color: var(--light-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+    background-image: radial-gradient(var(--container-bg) 1px, transparent 1px);
+    background-size: 15px 15px;
+}
+
+.container {
+    background: var(--container-bg);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid var(--border-glow);
+    box-shadow: 0 0 15px var(--border-glow), inset 0 0 10px rgba(0, 246, 255, 0.2);
+    width: 100%;
+    max-width: 480px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    color: var(--neon-glow);
+    text-shadow: 0 0 5px var(--neon-glow);
+    margin-bottom: 0;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    margin-top: -5px;
+    margin-bottom: 30px;
+    color: var(--light-text);
+}
+
+/* Hexagonal Image Frame */
+.polaroid {
+    background: #000;
+    cursor: pointer;
+    margin: 0 auto 20px auto;
+    width: 250px;
+    height: 280px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    position: relative;
+    overflow: hidden; /* Important for the scanner */
+    border: 2px solid var(--neon-glow);
+}
+
+#image-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills the hexagon */
+}
+
+/* Scanning Animation */
+.polaroid::after {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 0%, var(--neon-glow) 50%, transparent 100%);
+    opacity: 0.5;
+    animation: scan 3s linear infinite;
+}
+
+@keyframes scan {
+    0% { top: -100%; }
+    100% { top: 100%; }
+}
+
+#upload-placeholder {
+    padding: 80px 0;
+    color: var(--light-text);
+}
+
+textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 4px;
+    border: none;
+    border-bottom: 2px solid var(--border-glow);
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--light-text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    transition: box-shadow 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px var(--border-glow);
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: transparent;
+    color: var(--neon-glow);
+    border: 2px solid var(--neon-glow);
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-family: 'Share Tech Mono', monospace;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, text-shadow 0.3s;
+    text-shadow: 0 0 5px var(--neon-glow);
+}
+
+button:hover:not(:disabled) {
+    background-color: var(--neon-glow);
+    color: var(--dark-bg);
+    text-shadow: none;
+}
+
+button:disabled {
+    border-color: #555;
+    color: #555;
+    cursor: not-allowed;
+    text-shadow: none;
+}
+
+.result {
+    margin-top: 30px;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid var(--border-glow);
+}
+
+.hidden { display: none; }
+.spinner {
+    border: 4px solid #f3f3f3; 
+    border-top: 4px solid #3498db; 
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+.error-box {
+    background-color: #fbe2e2;
+    border-left: 4px solid #e74c3c;
+    color: #c0392b;
+    padding: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* New styles for the results */
+.outfit-title {
+    color: var(--neon-glow);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+.outfit-items { list-style: none; padding: 0; }
+.outfit-items li { margin-bottom: 8px; }
+.style-tip { font-style: italic; margin-top: 15px; padding-top: 15px; border-top: 1px dashed var(--border-glow); }
+
+
+#suggest-another-btn {
+    width: auto; /* Override the full-width button style */
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 20px;
+    display: block; /* Allows margin auto to work */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* In frontend/style.css */
+
+/* In frontend/style.css */
+
+/* ✅ REPLACE the old button group styles with these new, more compact ones */
+.style-selector {
+    margin-bottom: 20px;
+    text-align: left;
+}
+.style-selector label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--light-text);
+}
+/* In frontend/style.css */
+
+.style-filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; 
+}
+.style-filter-group button {
+    /* ✅ THIS IS THE FIX: Override the full-width style */
+    width: auto;
+
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-family: 'Share Tech Mono', monospace;
+    background-color: transparent;
+    color: var(--light-text);
+    border: 1px solid var(--border-glow);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+.style-filter-group button.active {
+    background-color: var(--neon-glow);
+    color: var(--dark-bg);
+    font-weight: bold;
+}
+
+
+/* --- Media Queries for Mobile Responsiveness --- */
+
+@media (max-width: 600px) {
+    body {
+        /* Remove extra padding for small screens */
+        padding: 10px;
+    }
+
+    .container {
+        /* Allow the container to be narrower and reduce padding */
+        max-width: 100%;
+        padding: 20px;
+    }
+
+    h1 {
+        /* Slightly smaller main title */
+        font-size: 2.5rem;
+    }
+
+    /* Adjust the hexagonal frame size for smaller screens */
+    .polaroid {
+        width: 200px;
+        height: 224px;
+    }
+
+    .outfit-title {
+        /* Smaller suggestion title */
+        font-size: 1.5rem;
+    }
+}
